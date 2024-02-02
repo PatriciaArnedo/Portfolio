@@ -3,7 +3,12 @@ import "./style.css";
 import animation from "./animation.js";
 
 const AnimationCanvas = () => {
-  return <>{animation}</>;
+  return (
+    <>
+      <canvas id="bg"></canvas>
+      {animation}
+    </>
+  );
 };
 
 export default AnimationCanvas;
