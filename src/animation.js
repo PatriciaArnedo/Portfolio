@@ -70,22 +70,23 @@ const moveShape = () => {
   const scrollDirection = currentScrollY > scrollY ? "down" : "up";
   const rotationSpeed = 0.03;
   if (scrollDirection === "up") {
-    // shape.rotation.x += rotationSpeed;
-    shape.rotation.y += rotationSpeed;
-    shape.rotation.z += rotationSpeed;
+    shape.rotation.x += rotationSpeed;
+    // shape.rotation.y += rotationSpeed;
+    // shape.rotation.z += rotationSpeed;
   } else {
-    // shape.rotation.x -= rotationSpeed;
-    shape.rotation.y -= rotationSpeed;
-    shape.rotation.z -= rotationSpeed;
+    shape.rotation.x -= rotationSpeed;
+    // shape.rotation.y -= rotationSpeed;
+    // shape.rotation.z -= rotationSpeed;
   }
   scrollY = currentScrollY;
 };
 
-document.body.addEventListener("wheel", moveShape);
+// document.body.addEventListener("wheel", moveShape);
 
 function animation() {
+  moveShape();
   requestAnimationFrame(animation);
   //controls.update();
-  renderer.render(scene, camera);
+  //renderer.render(scene, camera);
 }
 export default animation();
