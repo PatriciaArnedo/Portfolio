@@ -57,10 +57,12 @@ const addStar = () => {
 Array(200).fill().forEach(addStar);
 
 let scrollY = window.scrollY;
+let startY = 0;
+const rotationSpeed = 0.05;
+
 const moveShape = () => {
   const currentScrollY = window.scrollY;
   const scrollDirection = currentScrollY > scrollY ? "down" : "up";
-  const rotationSpeed = 0.05;
   if (scrollDirection === "up") {
     shape.rotation.x += rotationSpeed;
   } else {
@@ -69,21 +71,27 @@ const moveShape = () => {
   scrollY = currentScrollY;
 };
 
+const moveShapeMobile = (e) => {
+  const currentY = e.touches[0].clientY;
+  const deltaY = currentY - startY;
+
+  if (deltaY < 0) {
+    shape.rotation.x += rotationSpeed;
+  } else {
+    shape.rotation.x -= rotationSpeed;
+  }
+};
+
 document.body.addEventListener("wheel", (e) => {
   e.preventDefault();
   moveShape();
 });
 document.addEventListener("touchstart", (e) => {
-  e.preventDefault();
-  moveShape();
+  startY = e.touches[0].clientY;
 });
 document.addEventListener("touchmove", (e) => {
   e.preventDefault();
-  moveShape();
-});
-document.addEventListener("touchend", (e) => {
-  e.preventDefault();
-  moveShape();
+  moveShapeMobile(e);
 });
 
 function animation() {
