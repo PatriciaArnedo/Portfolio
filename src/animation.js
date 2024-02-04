@@ -81,12 +81,12 @@ const moveShape = () => {
   scrollY = currentScrollY;
 };
 
-// document.body.addEventListener("wheel", moveShape);
+document.body.addEventListener("wheel", moveShape);
+window.addEventListener("touchmove", moveShape);
 
 function animation() {
-  moveShape();
   requestAnimationFrame(animation);
   //controls.update();
-  //renderer.render(scene, camera);
+  renderer.render(scene, camera);
 }
 export default animation();
