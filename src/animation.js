@@ -81,8 +81,24 @@ const moveShape = () => {
   scrollY = currentScrollY;
 };
 
-document.body.addEventListener("wheel", moveShape);
-window.addEventListener("touchmove", moveShape);
+const handleResize = () => {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+};
+
+document.body.addEventListener("wheel", function (e) {
+  e.preventDefault();
+  moveShape();
+});
+document.addEventListener("touchmove", function (e) {
+  e.preventDefault();
+  moveShape();
+});
+window.addEventListener("resize", function (e) {
+  e.preventDefault();
+  handleResize();
+});
 
 function animation() {
   requestAnimationFrame(animation);
