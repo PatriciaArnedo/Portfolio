@@ -68,7 +68,7 @@ let scrollY = window.scrollY;
 const moveShape = () => {
   const currentScrollY = window.scrollY;
   const scrollDirection = currentScrollY > scrollY ? "down" : "up";
-  const rotationSpeed = 0.03;
+  const rotationSpeed = 0.05;
   if (scrollDirection === "up") {
     shape.rotation.x += rotationSpeed;
     // shape.rotation.y += rotationSpeed;
@@ -88,7 +88,7 @@ const moveShape = () => {
 // };
 
 document.body.addEventListener("wheel", moveShape);
-document.addEventListener("touchmove", moveShape);
+//document.addEventListener("touchmove", moveShape);
 //window.addEventListener("resize", handleResize);
 
 function animation() {
