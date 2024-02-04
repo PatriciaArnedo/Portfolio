@@ -58,7 +58,7 @@ Array(200).fill().forEach(addStar);
 
 let scrollY = window.scrollY;
 let startY = 0;
-const rotationSpeed = 0.05;
+const rotationSpeed = 0.07;
 
 const moveShape = () => {
   const currentScrollY = window.scrollY;
@@ -75,7 +75,7 @@ const moveShapeMobile = (e) => {
   const currentY = e.touches[0].clientY;
   const deltaY = currentY - startY;
 
-  if (deltaY < 0) {
+  if (deltaY > 0) {
     shape.rotation.x += rotationSpeed;
   } else {
     shape.rotation.x -= rotationSpeed;
