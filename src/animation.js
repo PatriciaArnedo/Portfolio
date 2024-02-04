@@ -87,18 +87,9 @@ const handleResize = () => {
   renderer.setSize(window.innerWidth, window.innerHeight);
 };
 
-document.body.addEventListener("wheel", function (e) {
-  e.preventDefault();
-  moveShape();
-});
-document.addEventListener("touchmove", function (e) {
-  e.preventDefault();
-  moveShape();
-});
-window.addEventListener("resize", function (e) {
-  e.preventDefault();
-  handleResize();
-});
+document.body.addEventListener("wheel", moveShape);
+document.addEventListener("touchmove", moveShape);
+window.addEventListener("resize", handleResize);
 
 function animation() {
   requestAnimationFrame(animation);
