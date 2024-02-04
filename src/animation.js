@@ -1,6 +1,5 @@
 import "./style.css";
 import * as THREE from "three";
-//import { OrbitControls } from "three/addons/controls/orbitControls";
 
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(0x000112);
@@ -23,10 +22,10 @@ renderer.render(scene, camera);
 const geometry = new THREE.DodecahedronGeometry(10, 0);
 
 const material = new THREE.MeshStandardMaterial({
-  color: 0xfa829e, // Pink color
-  metalness: 0.7, // Fully metallic for a shiny appearance
-  roughness: 0.6, // Adjust the roughness for shininess
-  transparent: true, // Enable transparency
+  color: 0xfa829e,
+  metalness: 0.7,
+  roughness: 0.6,
+  transparent: true,
   opacity: 1,
 });
 
@@ -44,7 +43,6 @@ scene.add(pointLight1, pointLight2, ambientLight);
 // const lightHelper1 = new THREE.PointLightHelper(pointLight1);
 // const lightHelper2 = new THREE.PointLightHelper(pointLight2);
 // scene.add(lightHelper1, lightHelper2);
-//const controls = new OrbitControls(camera, renderer.domElement);
 
 const addStar = () => {
   const geometry = new THREE.SphereGeometry(0.25, 24, 24);
@@ -88,12 +86,15 @@ const moveShape = () => {
 // };
 
 document.body.addEventListener("wheel", moveShape);
-//document.addEventListener("touchmove", moveShape);
+document.addEventListener("touchstart", moveShape);
+document.addEventListener("touchmove", (e) => {
+  e.preventDefault();
+  moveShape();
+});
 //window.addEventListener("resize", handleResize);
 
 function animation() {
   requestAnimationFrame(animation);
-  //controls.update();
   renderer.render(scene, camera);
 }
 export default animation();
