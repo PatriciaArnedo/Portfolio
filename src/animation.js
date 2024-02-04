@@ -81,15 +81,15 @@ const moveShape = () => {
   scrollY = currentScrollY;
 };
 
-const handleResize = () => {
-  camera.aspect = window.innerWidth / window.innerHeight;
-  camera.updateProjectionMatrix();
-  renderer.setSize(window.innerWidth, window.innerHeight);
-};
+// const handleResize = () => {
+//   camera.aspect = window.innerWidth / window.innerHeight;
+//   camera.updateProjectionMatrix();
+//   renderer.setSize(window.innerWidth, window.innerHeight);
+// };
 
 document.body.addEventListener("wheel", moveShape);
 document.addEventListener("touchmove", moveShape);
-window.addEventListener("resize", handleResize);
+//window.addEventListener("resize", handleResize);
 
 function animation() {
   requestAnimationFrame(animation);
