@@ -23,26 +23,20 @@ const geometry = new THREE.DodecahedronGeometry(10, 0);
 
 const material = new THREE.MeshStandardMaterial({
   color: 0xfa829e,
-  metalness: 0.7,
+  metalness: 0.8,
   roughness: 0.6,
-  transparent: true,
-  opacity: 1,
 });
 
 const shape = new THREE.Mesh(geometry, material);
 
 scene.add(shape);
 
-const pointLight1 = new THREE.PointLight(0xf7f0e6, 90);
+const pointLight1 = new THREE.PointLight(0xf7f0e6, 150);
+const pointLight2 = new THREE.PointLight(0xf7f0e6, 150);
 pointLight1.position.set(5, 0, 17);
-const pointLight2 = new THREE.PointLight(0xf7f0e6, 90);
+const ambientLight = new THREE.AmbientLight(0xf7f0e6, 4);
 pointLight2.position.set(-10, 0, -15);
-const ambientLight = new THREE.AmbientLight(0xf7f0e6);
 scene.add(pointLight1, pointLight2, ambientLight);
-
-// const lightHelper1 = new THREE.PointLightHelper(pointLight1);
-// const lightHelper2 = new THREE.PointLightHelper(pointLight2);
-// scene.add(lightHelper1, lightHelper2);
 
 const addStar = () => {
   const geometry = new THREE.SphereGeometry(0.25, 24, 24);
@@ -69,29 +63,28 @@ const moveShape = () => {
   const rotationSpeed = 0.05;
   if (scrollDirection === "up") {
     shape.rotation.x += rotationSpeed;
-    // shape.rotation.y += rotationSpeed;
-    // shape.rotation.z += rotationSpeed;
   } else {
     shape.rotation.x -= rotationSpeed;
-    // shape.rotation.y -= rotationSpeed;
-    // shape.rotation.z -= rotationSpeed;
   }
   scrollY = currentScrollY;
 };
 
-// const handleResize = () => {
-//   camera.aspect = window.innerWidth / window.innerHeight;
-//   camera.updateProjectionMatrix();
-//   renderer.setSize(window.innerWidth, window.innerHeight);
-// };
-
-document.body.addEventListener("wheel", moveShape);
-document.addEventListener("touchstart", moveShape);
+document.body.addEventListener("wheel", (e) => {
+  e.preventDefault();
+  moveShape();
+});
+document.addEventListener("touchstart", (e) => {
+  e.preventDefault();
+  moveShape();
+});
 document.addEventListener("touchmove", (e) => {
   e.preventDefault();
   moveShape();
 });
-//window.addEventListener("resize", handleResize);
+document.addEventListener("touchend", (e) => {
+  e.preventDefault();
+  moveShape();
+});
 
 function animation() {
   requestAnimationFrame(animation);
