@@ -5,7 +5,7 @@ import { Box } from "@mui/material";
 
 const App = () => {
   return (
-    <Box sx={{ m: 0, p: 0 }}>
+    <Box>
       <Navbar />
       <Animation />
     </Box>
