@@ -1,8 +1,8 @@
 import React from "react";
-import AnimationCanvas from "./AnimationCanvas.jsx";
+import Animation from "./Animation.jsx";
 
 const App = () => {
-  return <AnimationCanvas />;
+  return <Animation />;
 };
 
 export default App;
