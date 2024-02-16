@@ -1,5 +1,10 @@
 :root {
-  background-color: #000000;
+  background: linear-gradient(
+    to right,
+    rgb(255, 110, 195),
+    rgb(202, 104, 255) 50%,
+    rgb(57, 156, 255)
+  );
 }
 
 body {
