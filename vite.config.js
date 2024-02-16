@@ -5,6 +5,6 @@ export default defineConfig({
   build: {
     outDir: "dist",
   },
-  base: "/Sandbox",
+  base: "/Portfolio",
   plugins: [react()],
 });
